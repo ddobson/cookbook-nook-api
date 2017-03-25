@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(version: 20170325164954) do
     t.index ["user_id"], name: "index_cookbooks_on_user_id", using: :btree
   end
 
-  create_table "examples", force: :cascade do |t|
-    t.text     "text",       null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_examples_on_user_id", using: :btree
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.string   "name",        null: false
     t.integer  "cookbook_id", null: false
@@ -55,6 +47,5 @@ ActiveRecord::Schema.define(version: 20170325164954) do
   end
 
   add_foreign_key "cookbooks", "users"
-  add_foreign_key "examples", "users"
   add_foreign_key "recipes", "cookbooks"
 end
