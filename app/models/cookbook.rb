@@ -14,7 +14,7 @@ class Cookbook < ApplicationRecord
     end
   end
 
-  def fetch_available_pages(pages, recipe_ranges)
+  def update_available_pages(pages, recipe_ranges)
     recipe_ranges.each do |range|
       indexes = build_page_indexes(pages, range)
       next if indexes.length.zero?
