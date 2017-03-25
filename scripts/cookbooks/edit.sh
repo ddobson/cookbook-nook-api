@@ -4,12 +4,12 @@ curl "${API}${URL_PATH}" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \
-#  --header "Authorization: Token token=${TOKEN}" \
+  --header "Authorization: Token token=${TOKEN}" \
   --data '{
     "cookbook": {
       "title": "'"${TITLE}"'",
       "start_page": "'"${START}"'",
-      "end_page": "'"${END}"'",
+      "end_page": "'"${END}"'"
     }
   }'
 

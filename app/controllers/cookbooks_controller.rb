@@ -1,23 +1,27 @@
 # frozen_string_literal: true
 # :nodoc:
-class CookbooksController < ApplicationController
+class CookbooksController < OpenReadController
   before_action :set_cookbook, only: [:show, :update, :destroy]
 
   # GET /cookbooks
   def index
-    @cookbooks = Cookbook.all
+    @cookbooks = current_user.cookbooks.all
 
     render json: @cookbooks
   end
 
   # GET /cookbooks/1
   def show
-    render json: @cookbook
+    if @cookbook
+      render json: @cookbook
+    else
+      head status: :not_found
+    end
   end
 
   # POST /cookbooks
   def create
-    @cookbook = Cookbook.new(cookbook_params)
+    @cookbook = current_user.cookbooks.build(cookbook_params)
 
     if @cookbook.save
       render json: @cookbook, status: :created
@@ -43,7 +47,7 @@ class CookbooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cookbook
-      @cookbook = Cookbook.find(params[:id])
+      @cookbook = current_user.cookbooks.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
