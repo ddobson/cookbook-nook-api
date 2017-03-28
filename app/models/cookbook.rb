@@ -2,7 +2,7 @@
 # :nodoc:
 class Cookbook < ApplicationRecord
   belongs_to :user
-  has_many :recipes
+  has_many :recipes, dependent: :destroy
   validates :user, :title, :start_page, :end_page, presence: true
 
   def recipe_page_ranges

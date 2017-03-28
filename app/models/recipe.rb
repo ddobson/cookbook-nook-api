@@ -8,6 +8,7 @@ class Recipe < ApplicationRecord
 
   def update_available_pages
     @cookbook = cookbook
+    return if @cookbook.frozen?
     cookbook_pages = (@cookbook.start_page..@cookbook.end_page).to_a
     recipe_pages = @cookbook.recipe_page_ranges
     avail_pages = @cookbook.update_available_pages(cookbook_pages, recipe_pages)
