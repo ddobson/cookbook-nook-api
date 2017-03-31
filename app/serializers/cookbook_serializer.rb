@@ -9,7 +9,12 @@ class CookbookSerializer < ActiveModel::Serializer
 
   def recipes
     object.recipes.map do |recipe|
-      { id: recipe.id, name: recipe.name }
+      {
+        id: recipe.id,
+        name: recipe.name,
+        start_page: recipe.start_page,
+        end_page: recipe.end_page
+      }
     end
   end
 end
