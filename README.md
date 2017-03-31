@@ -6,7 +6,7 @@
 
 [Production API](https://cook-book-nook-api.herokuapp.com/)
 
-[ERD: ](https://github.com/ddobson/cookbook_nook_api/blob/master/cookbook_nook.pdf)
+[ERD: ](https://github.com/ddobson/cookbook-nook-api/blob/master/cookbook_nook.pdf)
 
 ## Routes
 
