@@ -24,6 +24,7 @@ class CookbooksController < OpenReadController
     @cookbook = current_user.cookbooks.build(cookbook_params)
 
     if @cookbook.save
+      @cookbook.set_avail_pages
       render json: @cookbook, status: :created
     else
       render json: @cookbook.errors, status: :unprocessable_entity
@@ -33,6 +34,7 @@ class CookbooksController < OpenReadController
   # PATCH/PUT /cookbooks/1
   def update
     if @cookbook.update(cookbook_params)
+      @cookbook.set_avail_pages
       render json: @cookbook
     else
       render json: @cookbook.errors, status: :unprocessable_entity

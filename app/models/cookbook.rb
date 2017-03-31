@@ -4,7 +4,6 @@ class Cookbook < ApplicationRecord
   belongs_to :user
   has_many :recipes, dependent: :destroy
   validates :user, :title, :start_page, :end_page, presence: true
-  after_create :set_avail_pages
 
   def set_avail_pages
     self.avail_pages = (start_page..end_page).to_a
