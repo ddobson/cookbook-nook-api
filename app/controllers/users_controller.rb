@@ -2,6 +2,10 @@
 class UsersController < ProtectedController
   skip_before_action :authenticate, only: [:signup, :signin]
 
+  def validate_user
+    render status: 200 if current_user
+  end
+
   # POST '/sign-up'
   def signup
     user = User.create(user_creds)
